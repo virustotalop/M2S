@@ -31,7 +31,7 @@ The below is quoted from http://www.cs.princeton.edu/~min/binvox/ to give you an
 
 >Qingnan Zhou wrote the code for the Gmsh .msh output.
 
->binvox uses the lib3ds library for reading .3ds files.
+>binvox uses the [lib3ds](http://www.lib3ds.org/) library for reading .3ds files.
 
 >**References**
 
