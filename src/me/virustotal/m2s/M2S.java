@@ -28,6 +28,14 @@ public class M2S extends JavaPlugin {
 	public String dneMessage;
 	public String fileMoved;
 	
+	public String convertFormatMessage;
+	public String moveFormatMessage;
+	public String listFormatMessage;
+	
+	public String noModelMessage;
+	public String noSchematicMessage;
+	
+	
 	public void onEnable()
 	{
 		if(!pluginFolder.exists())
@@ -40,14 +48,23 @@ public class M2S extends JavaPlugin {
 			this.reloadConfig();
 		
 		
-		for(String string : this.menu)
+		for(String string : this.getConfig().getStringList("m2s-menu"))
 		{
 			this.menu.add(ChatColor.translateAlternateColorCodes('&',string));
 		}
 		
+		System.out.println(menu.size());
+		
 		this.convertMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("convert-message"));
 		this.dneMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dne-message"));
 		this.fileMoved = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("file-moved"));
+		
+		this.convertFormatMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("convert-format-message"));
+		this.moveFormatMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("move-format-message"));
+		this.listFormatMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("list-format-message"));
+		
+		this.noModelMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("no-model-message"));
+		this.noSchematicMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("no-schematic-message"));
 		
 		String os = BinvoxUtilities.getOS();
 		if(os.equals("unknown"))

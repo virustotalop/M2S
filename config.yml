@@ -1,9 +1,16 @@
-﻿m2s-menu:
-- "&6&l━━━━━━ &c&lM2S &6&l━━━━━━"
-- "&c1. /m2s convert - Convert model files to schematic!"
-- "&c2. /m2s move - Move converted files to the WorldEdit schematic folder!"
-- "&c3. /m2s list <models/schematic> - List model & schematic files!"
+m2s-menu:
+- "&6&l----- &cM2S &6&l-----"
+- "&c1. /m2s convert <model> - Convert model files to schematic!"
+- "&c2. /m2s move <schematic> - Move converted files to the WorldEdit schematic folder!"
+- "&c3. /m2s list <models/schematics> - List model & schematic files!"
 
-convert-message: "&8&l[&c&lM2S&8&l] Your file has been converted!"
-dne-message: "&8&l[&c&lM2S&8&l] That file does not exist do /m2s models/schematics!"
-file-moved: "&8&l[&c&lM2S&8&l] File moved to WorldEdit schematic folder!"
+convert-message: "&8[&cM2S&8] &cYour file has been converted!"
+dne-message: "&8[&cM2S&8] &cThat file does not exist do /m2s <models/schematics>!"
+file-moved: "&8[&cM2S&8] &cFile moved to WorldEdit schematic folder!"
+
+convert-format-message: "&8[&cM2S&8] &c/m2s convert <model>"
+move-format-message: "&8[&cM2S&8] &c/m2s move <schematic>"
+list-format-message: "&8[&cM2S&8] &c/m2s list <models/schematics>"
+
+no-model-message: "&8[&cM2S&8] There are no models in the model folder!"
+no-schematic-message: "&8[&cM2S&8] There are no schematics that were converted!"

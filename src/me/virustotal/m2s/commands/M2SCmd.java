@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import me.virustotal.m2s.M2S;
+import me.virustotal.m2s.utils.BinvoxUtilities;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -34,26 +35,41 @@ public class M2SCmd implements CommandExecutor {
 					}
 					return true;
 				}
-				else if(args.length == 1)
+				else if(args.length == 1) //only one arg
 				{
-					
+					if(args[0].equalsIgnoreCase("convert"))
+					{
+						sender.sendMessage(plugin.convertFormatMessage);
+						return true;
+					}
+					else if(args[0].equalsIgnoreCase("move"))
+					{
+						sender.sendMessage(plugin.moveFormatMessage);
+						return true;
+					}
+					else if(args[0].equalsIgnoreCase("list"))
+					{
+						sender.sendMessage(plugin.listFormatMessage);
+						return true;
+					}
+					for(String string : plugin.menu)
+					{
+						sender.sendMessage(string);
+					}
 					return true;
 				}
-				else if(args.length == 2)
+				else if(args.length == 2) //two args
 				{
 					if(args[0].equals("convert"))
 					{
 						String modelPath = plugin.modelFolder.getAbsolutePath() + File.separator + args[1];
 						if(new File(modelPath).exists())
 						{
-							String binvoxPath = plugin.pluginFolder.getAbsolutePath() + File.separator + "binvox.exe";
-							String path = "\"" + binvoxPath + "\"" + " " + "\"" + modelPath + "\"" + " -d 256 -t schematic -aw -c -dc -dmin 1";
-							try {
-								Runtime.getRuntime().exec(path);
-								sender.sendMessage(plugin.convertMessage);
-							} catch (IOException e) {
-								e.printStackTrace();
+							if(BinvoxUtilities.getOS().equals("windows"))
+							{
+								this.runForWindows(modelPath);
 							}
+							sender.sendMessage(plugin.convertMessage);
 							return true;
 						} else {
 							sender.sendMessage(plugin.dneMessage);
@@ -70,16 +86,63 @@ public class M2SCmd implements CommandExecutor {
 							if(schematicFile.getName().endsWith(".schematic"))
 							{
 								schematicFile.renameTo(new File(plugin.schematicFolder + File.separator + schematicFile.getName()));
+								sender.sendMessage(plugin.fileMoved);
+								return true;
 							}
-						} else {
+						} 
+						else 
+						{
 							sender.sendMessage(plugin.dneMessage);
 							return true;
 						}
 					}
+					else if(args[0].equalsIgnoreCase("list"))
+					{
+						if(args[1].equalsIgnoreCase("models"))
+						{
+							boolean hasFile = false;
+							File[] ar = plugin.modelFolder.listFiles();
+							for(File file : ar)
+							{
+								if(!file.getName().endsWith(".schematic"))
+								{
+									hasFile = true;
+									sender.sendMessage(file.getName());
+								}
+							}
+							if(!hasFile)
+							{
+								sender.sendMessage(plugin.noModelMessage);
+							}
+						}
+						else if(args[1].equalsIgnoreCase("schematics"))
+						{
+							boolean hasFile = false;
+							File[] ar = plugin.modelFolder.listFiles();
+							for(File file : ar)
+							{
+								if(file.getName().endsWith(".schematic"))
+								{
+									hasFile = true;
+									sender.sendMessage(file.getName());
+								}
+							}
+							if(!hasFile)
+							{
+								sender.sendMessage(plugin.noSchematicMessage);
+							}
+						}
+						else {
+							sender.sendMessage(plugin.listFormatMessage);
+						}
+					}
 				}
-				else if(args.length == 3)
-				{
-					
+				else {
+					for(String string : plugin.menu)
+					{
+						sender.sendMessage(string);
+					}
+					return true;
 				}
 				return true;
 			}
@@ -89,4 +152,15 @@ public class M2SCmd implements CommandExecutor {
 		return false;
 	}
 
+	public void runForWindows(String modelPath)
+	{
+		String binvoxPath = plugin.pluginFolder.getAbsolutePath() + File.separator + "binvox.exe";
+		String path = "\"" + binvoxPath + "\"" + " " + "\"" + modelPath + "\"" + " -d 256 -t schematic -aw -c -dc -dmin 1";
+		try {
+			Runtime.getRuntime().exec(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
