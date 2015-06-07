@@ -2,6 +2,7 @@ name: M2S
 main: me.virustotal.m2s.M2S
 version: 1.0
 author: VirusTotal
+depend: [WorldEdit]
 commands:
   m2s:
-    description: "Model to schematic base command!"
+    description: "Model to schematic command!"

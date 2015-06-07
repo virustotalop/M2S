@@ -1,0 +1,9 @@
+﻿m2s-menu:
+- "&6&l━━━━━━ &c&lM2S &6&l━━━━━━"
+- "&c1. /m2s convert - Convert model files to schematic!"
+- "&c2. /m2s move - Move converted files to the WorldEdit schematic folder!"
+- "&c3. /m2s list <models/schematic> - List model & schematic files!"
+
+convert-message: "&8&l[&c&lM2S&8&l] Your file has been converted!"
+dne-message: "&8&l[&c&lM2S&8&l] That file does not exist do /m2s models/schematics!"
+file-moved: "&8&l[&c&lM2S&8&l] File moved to WorldEdit schematic folder!"

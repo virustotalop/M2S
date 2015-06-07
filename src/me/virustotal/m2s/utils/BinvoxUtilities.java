@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import org.bukkit.Bukkit;
 
 public class BinvoxUtilities {
-	
+
 	public static String getOS()
 	{
 		String name = System.getProperties().getProperty("os.name").toLowerCase();
@@ -29,29 +29,27 @@ public class BinvoxUtilities {
 		}
 		return "unknown";
 	}
-	
+
 	public static boolean hasBinVox(String os, File folderPath)
 	{
 		if(os.equals("windows"))
 		{
-			if(new File(folderPath.getAbsolutePath() + File.pathSeparator + "binvox.exe").exists())
-			{
-				return true;
-			}
+			return new File(folderPath.getAbsolutePath() + File.separator + "binvox.exe").exists() 
+					&& new File(folderPath.getAbsolutePath() + File.separator + "glut32.dll").exists();
 		}
-		
+
 		return false;
 	}
-	
+
 	public static void downloadBinVox(String os, File folderPath)
 	{
 		if(os.equals("windows"))
 		{
 			windowsDownload(os,folderPath);
 		}
-		
+
 	}
-	
+
 	private static void windowsDownload(String os, File folderPath)
 	{
 		try {
@@ -81,9 +79,9 @@ public class BinvoxUtilities {
 			e.printStackTrace();
 			return;
 		}
-		
+
 		Bukkit.getLogger().log(Level.INFO, "Unzipping glut...");
-		
+
 		String glutPath = folderPath.getAbsolutePath() + File.separator + "glutdlls.zip";
 		try {
 			UnzipUtility.unzip(glutPath, folderPath.getAbsolutePath());
@@ -93,6 +91,9 @@ public class BinvoxUtilities {
 			Bukkit.getLogger().log(Level.SEVERE, "Please report the failure to VirusTotal on spigot");
 			e.printStackTrace();
 		}
-		
+	}
+	public static void windowsExecute()
+	{
+
 	}
 }
