@@ -7,6 +7,14 @@ A bukkit plugin wrapper that is powered by the program binvox.
 * /m2s move <schematic> - Move a schematic file to the WorldEdit folder.
 * /m2s list <models/schematics> - Lists the model and schematic files.
 
+#Supported Operating Systems
+
+* Windows - ✓
+* Linux - ✗
+  * It is currently being worked on.
+* Mac OS X - ✗
+  * I have no system to test it on but can be done.
+
 #What is binvox?
 **Note I am not the author of binvox I am simply just creating a plugin wrapper for the program binvox.**
 
