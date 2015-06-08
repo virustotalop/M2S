@@ -118,6 +118,7 @@ public class M2SCmd implements CommandExecutor {
 							{
 								sender.sendMessage(plugin.noModelMessage);
 							}
+							return true;
 						}
 						else if(args[1].equalsIgnoreCase("schematics"))
 						{
@@ -135,9 +136,11 @@ public class M2SCmd implements CommandExecutor {
 							{
 								sender.sendMessage(plugin.noSchematicMessage);
 							}
+							return true;
 						}
 						else {
 							sender.sendMessage(plugin.listFormatMessage);
+							return true;
 						}
 					}
 				}
