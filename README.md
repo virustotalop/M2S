@@ -2,7 +2,10 @@
 A bukkit plugin wrapper that is powered by the program binvox.
 
 #Commands
-* /m2s - Base command
+* /m2s - Menu command/
+* /m2s convert <model> - Convert a model file.
+* /m2s move <schematic> - Move a schematic file to the WorldEdit folder.
+* /m2s list <models/schematics> - Lists the model and schematic files.
 
 #What is binvox?
 **Note I am not the author of binvox I am simply just creating a plugin wrapper for the program binvox.**
