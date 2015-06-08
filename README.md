@@ -18,6 +18,8 @@ A bukkit plugin wrapper that is powered by the program binvox.
 #What is binvox?
 **Note I am not the author of binvox I am simply just creating a plugin wrapper for the program binvox.**
 
+If you want to know minecraft specific information it can be found [here.] (http://minecraft.gamepedia.com/Programs_and_editors/Binvox)
+
 The below is quoted from http://www.cs.princeton.edu/~min/binvox/ to give you an overview of what binvox is.
 
 >Introduction
