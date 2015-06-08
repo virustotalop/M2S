@@ -37,7 +37,10 @@ public class BinvoxUtilities {
 			return new File(folderPath.getAbsolutePath() + File.separator + "binvox.exe").exists() 
 					&& new File(folderPath.getAbsolutePath() + File.separator + "glut32.dll").exists();
 		}
-
+		else if(os.equals("linux"))
+		{
+			return new File(folderPath.getAbsolutePath() + File.separator + "binvox").exists();
+		}
 		return false;
 	}
 
@@ -45,7 +48,11 @@ public class BinvoxUtilities {
 	{
 		if(os.equals("windows"))
 		{
-			windowsDownload(os,folderPath);
+			windowsDownload(os, folderPath);
+		}
+		else if(os.equalsIgnoreCase("linux"))
+		{
+			linuxDownload(os, folderPath);
 		}
 
 	}
@@ -92,8 +99,23 @@ public class BinvoxUtilities {
 			e.printStackTrace();
 		}
 	}
-	public static void windowsExecute()
+	
+	private static void linuxDownload(String os, File folderPath)
 	{
-
+		try {
+			URL file = new URL("http://www.cs.princeton.edu/~min/binvox/linux64/binvox");
+			ReadableByteChannel rbc = Channels.newChannel(file.openStream());
+			FileOutputStream fos = new FileOutputStream(folderPath.getAbsolutePath() + File.separator + "binvox");
+			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+			fos.close();
+			Bukkit.getLogger().log(Level.INFO, "Binvox for " + os + " has been downloaded!");
+		} catch (IOException e) {
+			Bukkit.getLogger().log(Level.SEVERE, "Download failed for binvox for os: " + os);
+			Bukkit.getLogger().log(Level.SEVERE, "Please report the failure to VirusTotal on spigot");
+			e.printStackTrace();
+			return;
+		}
 	}
+	
+	
 }

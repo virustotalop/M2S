@@ -69,6 +69,10 @@ public class M2SCmd implements CommandExecutor {
 							{
 								this.runForWindows(modelPath);
 							}
+							else if(BinvoxUtilities.getOS().equals("linux"))
+							{
+								this.runForLinux(modelPath);
+							}
 							sender.sendMessage(plugin.convertMessage);
 							return true;
 						} else {
@@ -80,7 +84,7 @@ public class M2SCmd implements CommandExecutor {
 					{
 						String schematicPath = plugin.modelFolder.getAbsolutePath() + File.separator + args[1];
 						File schematicFile = new File(schematicPath); 
-						
+
 						if(schematicFile.exists())
 						{
 							if(schematicFile.getName().endsWith(".schematic"))
@@ -155,12 +159,23 @@ public class M2SCmd implements CommandExecutor {
 	public void runForWindows(String modelPath)
 	{
 		String binvoxPath = plugin.pluginFolder.getAbsolutePath() + File.separator + "binvox.exe";
-		String path = "\"" + binvoxPath + "\"" + " " + "\"" + modelPath + "\"" + " -d 256 -t schematic -aw -c -dc -dmin 1";
+		String path = "\"" + binvoxPath + "\"" + " " + "\"" + modelPath + "\"" + " -d 256 -t schematic -aw -c -dc -dmin 1 -down";
 		try {
 			Runtime.getRuntime().exec(path);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void runForLinux(String modelPath)
+	{
+		String binvoxPath = plugin.pluginFolder.getAbsolutePath() + File.separator + "binvox";
+		String path = "screen 0 640x480x24 "+ binvoxPath  + " "  + modelPath  + " -d 256 -t schematic -aw -c -dc -dmin 1 -down";
+		try {
+			Runtime.getRuntime().exec(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

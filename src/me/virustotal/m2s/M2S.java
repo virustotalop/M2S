@@ -47,13 +47,10 @@ public class M2S extends JavaPlugin {
 		else
 			this.reloadConfig();
 		
-		
 		for(String string : this.getConfig().getStringList("m2s-menu"))
 		{
 			this.menu.add(ChatColor.translateAlternateColorCodes('&',string));
 		}
-		
-		System.out.println(menu.size());
 		
 		this.convertMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("convert-message"));
 		this.dneMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("dne-message"));
@@ -75,6 +72,10 @@ public class M2S extends JavaPlugin {
 
 		this.we = (WorldEditPlugin) Bukkit.getPluginManager().getPlugin("WorldEdit");
 		this.schematicFolder = new File(this.we.getDataFolder().getAbsolutePath() + File.separator + "schematics");
+		
+		Bukkit.getLogger().log(Level.INFO, "I, VirusTotal am not responsible for any content in binvox or glutt.");
+		Bukkit.getLogger().log(Level.INFO, "If you have any issues with either of those programs please contact their respective authors.");
+		Bukkit.getLogger().log(Level.INFO, "If this program throws an error contact VirusTotal.");
 		
 		Bukkit.getLogger().log(Level.INFO, "Checking for binvox...");
 		
