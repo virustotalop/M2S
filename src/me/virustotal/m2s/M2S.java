@@ -35,7 +35,6 @@ public class M2S extends JavaPlugin {
 	public String noModelMessage;
 	public String noSchematicMessage;
 	
-	
 	public void onEnable()
 	{
 		if(!pluginFolder.exists())

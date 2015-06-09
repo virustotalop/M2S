@@ -172,8 +172,8 @@ public class M2SCmd implements CommandExecutor {
 
 	public void runForLinux(String modelPath)
 	{
-		String binvoxPath = plugin.pluginFolder.getAbsolutePath() + File.separator + "binvox";
-		String path = "screen 0 640x480x24 "+ binvoxPath  + " "  + modelPath  + " -d 256 -t schematic -aw -c -dc -dmin 1 -down";
+		String binvoxPath = plugin.pluginFolder.getAbsolutePath() + File.separator + "./binvox";
+		String path = binvoxPath  + " "  + modelPath  + " -d 256 -t schematic -aw -c -dc -dmin 1 -down";
 		try {
 			Runtime.getRuntime().exec(path);
 		} catch (IOException e) {
