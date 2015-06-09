@@ -11,11 +11,10 @@ A bukkit plugin wrapper that is powered by the program binvox.
 
 * **Windows - ✓**
 * **Linux - ✓**
-* Libaries need to be manually installed
-  * Centos
-    * Commands need to be ran as root.
-    * yum install freeglut -y
-    * yum install xorg-x11-server-Xvfb -y
+* Centos
+ * Commands need to be ran as root.
+ * yum install freeglut -y
+ * yum install xorg-x11-server-Xvfb -y
         
 * **Mac OS X - ✗**
   * I have no system to test it on but can be done.
