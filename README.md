@@ -9,10 +9,15 @@ A bukkit plugin wrapper that is powered by the program binvox.
 
 #Supported Operating Systems
 
-* Windows - ✓
-* Linux - ✗
-  * It is currently being worked on.
-* Mac OS X - ✗
+* **Windows - ✓**
+* **Linux - ✓**
+* Libaries need to be manually installed
+  * Centos
+    * Commands need to be ran as root.
+    * yum install freeglut -y
+    * yum install xorg-x11-server-Xvfb -y
+        
+* **Mac OS X - ✗**
   * I have no system to test it on but can be done.
 
 #What is binvox?
