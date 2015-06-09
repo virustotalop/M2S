@@ -1,8 +1,10 @@
 package me.virustotal.m2s.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -99,7 +101,7 @@ public class BinvoxUtilities {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void linuxDownload(String os, File folderPath)
 	{
 		try {
@@ -108,6 +110,7 @@ public class BinvoxUtilities {
 			FileOutputStream fos = new FileOutputStream(folderPath.getAbsolutePath() + File.separator + "binvox");
 			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 			fos.close();
+			Runtime.getRuntime().exec("chmod +x " + folderPath.getAbsolutePath() + File.separator + "binvox");
 			Bukkit.getLogger().log(Level.INFO, "Binvox for " + os + " has been downloaded!");
 		} catch (IOException e) {
 			Bukkit.getLogger().log(Level.SEVERE, "Download failed for binvox for os: " + os);
@@ -115,7 +118,31 @@ public class BinvoxUtilities {
 			e.printStackTrace();
 			return;
 		}
+
+		try {
+			Process cat = Runtime.getRuntime().exec("cat /etc/*-release");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(cat.getInputStream()));
+			String readLine = reader.readLine().toLowerCase();
+			
+			if(readLine.contains("centos"))
+			{
+
+			}
+			else if(readLine.contains("debian"))
+			{
+				
+			}
+			else if(readLine.contains("ubuntu"))
+			{
+				
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
 	}
-	
-	
+
+
 }
